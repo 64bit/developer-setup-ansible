@@ -6,7 +6,7 @@
     - { role: visual-studio-code, become: true }
     - { role: ssh }
     - role: git
-      global:
+      gitconfig:
         user.email: himanshun.iitkgp@gmail.com
         user.name: Himanshu Neema
         core.editor: vim

@@ -10,5 +10,5 @@
     name: "{{ item.key }}"
     value: "{{ item.value }}"
     scope: global
-  loop: "{{ lookup('dict', global) }}"
-  when: global is defined
+  loop: "{{ lookup('dict', gitconfig) }}"
+  when: gitconfig is defined
