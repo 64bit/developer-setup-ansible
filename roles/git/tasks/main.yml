@@ -1,9 +1,14 @@
 ---
 # tasks file for git
+- name: Install Git
+  package:
+    name: git
+    state: present
+
 - name: Create global gitconfig
   git_config:
     name: "{{ item.key }}"
     value: "{{ item.value }}"
     scope: global
   loop: "{{ lookup('dict', global) }}"
-  when: global  
+  when: global is defined
