@@ -1,0 +1,12 @@
+---
+# tasks file for vim
+
+- name: Install Vim
+  package:
+    name: vim
+    state: present
+
+- name: Create .vimrc
+  copy:
+    src: vimrc
+    dest: "{{ lookup('env', 'HOME') }}/.vimrc"

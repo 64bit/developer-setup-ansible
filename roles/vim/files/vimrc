@@ -1,0 +1,4 @@
+set expandtab
+set tabstop=2
+syn on
+set history=500

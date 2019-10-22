@@ -2,9 +2,10 @@
 - name: Developer Machine Setup Playbook
   hosts: localhost
   roles:
-    - { role: common, become: true }
+    - role: vim
+    - { role: common-packages, become: true }
     - { role: visual-studio-code, become: true }
-    - { role: ssh }
+    - role: ssh
     - role: git
       gitconfig:
         user.email: himanshun.iitkgp@gmail.com
