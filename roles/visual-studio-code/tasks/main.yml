@@ -1,0 +1,6 @@
+---
+# tasks file for visual-studio-code
+
+- name: "Install Visual Studio Code with {{ ansible_pkg_mgr }}"
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+
