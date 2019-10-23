@@ -16,8 +16,13 @@
   register: ohmyzsh_dir  
 
 - name: Install Oh My Zsh
-  shell: 'echo yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
   when: not ohmyzsh_dir.stat.exists
+  register: installed
+
+- debug:
+    msg: Change your shell using chsh
+  when: installed.changed == true
 
 - name: Setup Oh My Zsh Theme
   lineinfile:
