@@ -4,6 +4,7 @@
   package:
     name: git
     state: present
+  become: yes
 
 - name: Create global gitconfig
   git_config:
