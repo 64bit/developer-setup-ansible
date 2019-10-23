@@ -2,9 +2,9 @@
 - name: Developer Machine Setup Playbook
   hosts: localhost
   roles:
+    - role: common-packages
     - role: vim
-    - { role: common-packages, become: true }
-    - { role: visual-studio-code, become: true }
+    - role: visual-studio-code
     - role: ssh
     - role: git
       gitconfig:
@@ -12,6 +12,7 @@
         user.name: Himanshu Neema
         core.editor: vim
         merge.conflictsytle: diff3
-
-
-
+    - role: zsh
+      ohmyzsh_theme: agnoster
+      ohmyzsh_plugins:
+      - git
