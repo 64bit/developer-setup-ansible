@@ -16,3 +16,4 @@
       ohmyzsh_theme: agnoster
       ohmyzsh_plugins:
       - git
+    - role: docker
