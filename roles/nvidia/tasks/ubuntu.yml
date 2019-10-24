@@ -8,3 +8,4 @@
 - name: Rebooting Computer
   reboot: 
   when: install.changed and reboot_after_installation
+  become: yes
