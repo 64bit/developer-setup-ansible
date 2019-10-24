@@ -1,0 +1,14 @@
+- name: Obtain OS Kernel
+  shell: uname -s
+  register: uname_kernel
+
+- name: Obtain Machine
+  shell: uname -m
+  register: uname_machine
+
+- name: Install Docker Compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-{{ uname_kernel.stdout }}-{{ uname_machine.stdout}}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  become: yes  
