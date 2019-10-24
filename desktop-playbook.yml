@@ -19,5 +19,4 @@
     - role: docker
     - role: nvidia
       driver_version: "430"
-      reboot_after_installation: true
       tags: nvidia
