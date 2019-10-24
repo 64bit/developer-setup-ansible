@@ -1,0 +1,6 @@
+---
+# tasks file for nvidia
+
+- name: Nvidia Driver
+  include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'

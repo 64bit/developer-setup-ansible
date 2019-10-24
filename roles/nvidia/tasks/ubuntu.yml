@@ -1,0 +1,10 @@
+- name: Install Nvidia Driver
+  apt:
+    name: "nvidia-driver-{{ driver_version }}"
+    update_cache: yes
+  register: install  
+  become: yes
+
+- name: Rebooting Computer
+  reboot: 
+  when: install.changed and reboot_after_installation
