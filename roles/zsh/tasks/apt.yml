@@ -1,0 +1,5 @@
+- name: Install Powerline Fonts
+  package:
+    name: fonts-powerline
+    state: present
+  become: yes

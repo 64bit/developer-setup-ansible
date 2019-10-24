@@ -20,15 +20,15 @@
   when: not ohmyzsh_dir.stat.exists
   register: installed
 
-- debug:
-    msg: Change your shell using chsh
-  when: installed.changed == true
-
 - name: Setup Oh My Zsh Theme
   lineinfile:
     path: "{{ lookup('env', 'HOME') }}/.zshrc"
     regexp: '^ZSH_THEME=' 
     line: "ZSH_THEME={{ ohmyzsh_theme | default('robbyrussell') }}"
+
+- name: Powerline fonts
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+  when: ohmyzsh_theme == 'agnoster'
 
 - set_fact:
     all_plugins: "{{ ohmyzsh_plugins | join(' ') }}"
@@ -38,3 +38,9 @@
     path: "{{ lookup('env', 'HOME') }}/.zshrc"
     regexp: '^plugins=' 
     line: 'plugins=({{ all_plugins }})'
+
+- name: Change Shell to zsh
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /bin/zsh
+  become: yes

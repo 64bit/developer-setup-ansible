@@ -23,3 +23,10 @@
     state: present
     update_cache: yes
   become: yes
+
+- name: Add user to docker group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: true
+  become: yes
