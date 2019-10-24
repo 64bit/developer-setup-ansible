@@ -20,15 +20,15 @@
   when: not ohmyzsh_dir.stat.exists
   register: installed
 
+- name: Powerline fonts
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+  when: ohmyzsh_theme == 'agnoster'
+
 - name: Setup Oh My Zsh Theme
   lineinfile:
     path: "{{ lookup('env', 'HOME') }}/.zshrc"
     regexp: '^ZSH_THEME=' 
     line: "ZSH_THEME={{ ohmyzsh_theme | default('robbyrussell') }}"
-
-- name: Powerline fonts
-  include_tasks: "{{ ansible_pkg_mgr }}.yml"
-  when: ohmyzsh_theme == 'agnoster'
 
 - set_fact:
     all_plugins: "{{ ohmyzsh_plugins | join(' ') }}"
