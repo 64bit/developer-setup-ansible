@@ -1,0 +1,22 @@
+
+- name: Developer Machine Setup Playbook
+  hosts: localhost
+  roles:
+    - role: common-packages
+    - role: vim
+    - role: visual-studio-code
+    - role: ssh
+    - role: git
+      gitconfig:
+        user.email: himanshun.iitkgp@gmail.com
+        user.name: Himanshu Neema
+        core.editor: vim
+        merge.conflictsytle: diff3
+    - role: zsh
+      ohmyzsh_theme: agnoster
+      ohmyzsh_plugins:
+      - git
+    - role: docker
+    - role: nvidia
+      driver_version: "430"
+      tags: nvidia

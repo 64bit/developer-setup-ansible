@@ -1,0 +1,8 @@
+---
+# tasks file for docker
+
+- name: "Install Docker with {{ ansible_pkg_mgr }}"
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+
+- name: Docker Compose
+  include_tasks: docker-compose.yml

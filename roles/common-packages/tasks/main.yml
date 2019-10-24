@@ -1,0 +1,11 @@
+---
+# tasks file for common
+
+- name: Install Packages
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes
+  with_items:
+   - tig
+   - curl

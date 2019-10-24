@@ -1,0 +1,7 @@
+---
+# tasks file for ssh
+
+- name: Generate SSH Key Pair
+  openssh_keypair:
+    type: rsa
+    path: "{{  lookup('env', 'HOME') }}/.ssh/id_ssh_rsa"

@@ -1,0 +1,46 @@
+---
+# tasks file for zsh
+- name: Install Zsh (with dependecy curl & git of oh-my-zsh) 
+  package:
+    name: "{{ item }}"
+    state: present
+  become: yes  
+  with_items:
+  - zsh
+  - curl
+  - git
+
+- name: Check if Oh My Zsh already installed
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: ohmyzsh_dir  
+
+- name: Install Oh My Zsh
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+  when: not ohmyzsh_dir.stat.exists
+  register: installed
+
+- name: Powerline fonts
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+  when: ohmyzsh_theme == 'agnoster'
+
+- name: Setup Oh My Zsh Theme
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    regexp: '^ZSH_THEME=' 
+    line: "ZSH_THEME={{ ohmyzsh_theme | default('robbyrussell') }}"
+
+- set_fact:
+    all_plugins: "{{ ohmyzsh_plugins | join(' ') }}"
+
+- name: Setup Oh My Zsh Plugins
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    regexp: '^plugins=' 
+    line: 'plugins=({{ all_plugins }})'
+
+- name: Change Shell to zsh
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    shell: /bin/zsh
+  become: yes
