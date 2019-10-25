@@ -5,3 +5,17 @@
   openssh_keypair:
     type: rsa
     path: "{{  lookup('env', 'HOME') }}/.ssh/id_ssh_rsa"
+
+- name: Install OpenSSH server
+  package:
+    name: openssh-server
+    state: present
+  become: yes
+
+- name: sshd configuration
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: 0600
+  notify: restart sshd
+  become: yes
