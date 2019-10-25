@@ -4,3 +4,7 @@
 - name: Nvidia Driver
   include_tasks: ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
+
+- name: Nvidia Docker Toolkit
+  include_tasks: nvidia-container-toolkit.yml
+  when: ansible_distribution == 'Ubuntu'

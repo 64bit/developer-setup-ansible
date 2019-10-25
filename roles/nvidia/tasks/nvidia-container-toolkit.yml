@@ -1,0 +1,35 @@
+# Based on https://github.com/NVIDIA/nvidia-docker/blob/master/README.md#quickstart
+- name: get apt key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+  become: yes
+
+- name: get distribution
+  shell: ". /etc/os-release; echo $ID$VERSION_ID"
+  register: output
+
+- name: add apt repository
+  get_url:
+    url: "https://nvidia.github.io/nvidia-docker/{{ output.stdout }}/nvidia-docker.list"
+    dest: /etc/apt/sources.list.d/nvidia-docker.list
+    mode: 644
+  become: yes  
+
+- name: check for nvidia-container-toolkit presence
+  package_facts:
+    manager: auto  
+
+- name: Install nvidia-container-toolkit
+  apt:
+    name: nvidia-container-toolkit
+    update_cache: yes
+    state: present
+  become: yes
+
+- name: Restart Docker
+  service:
+    name: docker
+    state: reloaded
+  when: "'nvidia-container-toolkit' not in ansible_facts.packages"
+  become: yes  
