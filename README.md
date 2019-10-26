@@ -21,3 +21,11 @@ To play `desktop-playbook.yml` playbook run:
 | vim | Installs `vim` and creates `~/.vimrc` | Configure [.vimrc](roles/vim/files/vimrc) |
 | visual-studio-code | Installs lastest version |  |
 | zsh | Installs `zsh` and `oh-my-zsh` | `ohmyzsh_theme` (string) and `ohmyzsh_plugins` (list) |  
+
+## Running specific Role
+
+Individual roles can be played by using tags with same name, for example to run only `nvidia`: 
+
+```
+ansible-playbook --ask-become-pass desktop-playbook.yml --tags nvidia
+```

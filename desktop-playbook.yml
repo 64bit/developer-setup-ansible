@@ -3,20 +3,27 @@
   hosts: localhost
   roles:
     - role: common-packages
+      tags: common-packages
     - role: vim
+      tags: vim
     - role: visual-studio-code
+      tags: visual-studio-code
     - role: ssh
+      tags: ssh
     - role: git
       gitconfig:
         user.email: himanshun.iitkgp@gmail.com
         user.name: Himanshu Neema
         core.editor: vim
         merge.conflictsytle: diff3
+      tags: git
     - role: zsh
       ohmyzsh_theme: agnoster
       ohmyzsh_plugins:
       - git
+      tags: zsh
     - role: docker
+      tags: docker
     - role: nvidia
       driver_version: "430"
       tags: nvidia
