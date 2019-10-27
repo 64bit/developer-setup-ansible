@@ -2,4 +2,34 @@
 # tasks file for pip
 
 - name: "Install Pip using {{ ansible_pkg_mgr }}"
-  include_tasks: "{{ ansible_pkg_mgr }}.yml"    
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
+
+- name: Does .zshrc exist
+  stat:
+    path: ~/.zshrc
+  register: st_zshrc
+
+- name: Does .bashrc exist
+  stat:
+    path: ~/.bashrc
+  register: st_bashrc
+
+- name: Set path for local pip packages bin in zshrc
+  lineinfile:
+    path: "~/.zshrc"
+    regexp: "PATH=$PATH:~/.local/bin"
+    line: "PATH=$PATH:~/.local/bin"
+  when: st_zshrc.stat.exists
+
+- name: Set path for local pip packages bin in bashrc
+  lineinfile:
+    path: "~/.bashrc"
+    regexp: "PATH=$PATH:~/.local/bin"
+    line: "PATH=$PATH:~/.local/bin"
+  when: st_bashrc.stat.exists
+
+- name: Install pip pacakges for Python3
+  pip:
+    name: "{{ item }}"
+    executable: pip3
+  loop: "{{ pip3_packages }}"

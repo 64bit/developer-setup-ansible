@@ -30,4 +30,6 @@
     - role: google-chrome
       tags: google-chrome
     - role: pip
+      pip3_packages:
+      - jupyterlab
       tags: pip
