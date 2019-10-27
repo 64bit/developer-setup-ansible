@@ -1,0 +1,5 @@
+---
+# tasks file for pip
+
+- name: "Install Pip using {{ ansible_pkg_mgr }}"
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"    

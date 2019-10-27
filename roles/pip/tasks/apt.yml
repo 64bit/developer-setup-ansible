@@ -1,0 +1,5 @@
+- name: Install Pip
+  apt:
+    name: [python-pip, python3-pip]
+  become: yes
+

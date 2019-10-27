@@ -29,3 +29,5 @@
       tags: nvidia
     - role: google-chrome
       tags: google-chrome
+    - role: pip
+      tags: pip
