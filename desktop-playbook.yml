@@ -27,3 +27,5 @@
     - role: nvidia
       driver_version: "430"
       tags: nvidia
+    - role: google-chrome
+      tags: google-chrome

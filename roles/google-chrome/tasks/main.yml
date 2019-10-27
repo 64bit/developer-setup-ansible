@@ -1,0 +1,5 @@
+---
+# tasks file for google-chrome
+
+- name: "Install Google Chrome with {{ ansible_pkg_mgr }}" 
+  include_tasks: "{{ ansible_pkg_mgr }}.yml"
