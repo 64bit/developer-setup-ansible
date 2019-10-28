@@ -21,3 +21,12 @@ To play `desktop-playbook.yml` playbook run:
 | vim | Installs `vim` and creates `~/.vimrc` | Configure [.vimrc](roles/vim/files/vimrc) |
 | visual-studio-code | Installs lastest version |  |
 | zsh | Installs `zsh` and `oh-my-zsh` | `ohmyzsh_theme` (string) and `ohmyzsh_plugins` (list) |  
+| pip | Installs `pip` (`pip2`) and `pip3`. Also sets `PATH=$PATH:~/.local/bin` for pip packages in shell startup files  (if present) `~/.zshrc` and `~/.bashrc`, hence restart shell as needed to load new `PATH`  | `pip3_packages` (list) |
+
+## Running specific Role
+
+Individual roles can be played by using tags with same name, for example to run only `nvidia`: 
+
+```
+ansible-playbook --ask-become-pass desktop-playbook.yml --tags nvidia
+```
