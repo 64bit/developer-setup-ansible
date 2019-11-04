@@ -33,3 +33,5 @@
       pip3_packages:
       - jupyterlab
       tags: pip
+    - role: virtual-machine-software
+      tags: virtual-machine-software
