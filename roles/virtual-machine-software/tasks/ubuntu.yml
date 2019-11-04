@@ -1,0 +1,7 @@
+- name: Install Multipass
+  snap:
+    name: multipass
+    channel: beta # As of 3 Nov 2019
+    classic: yes
+    state: present
+  become: yes

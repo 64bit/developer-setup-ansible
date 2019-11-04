@@ -1,0 +1,5 @@
+---
+# tasks file for virtual-machines
+- name: Install Virtual Machine Software
+  include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
