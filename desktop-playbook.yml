@@ -35,3 +35,7 @@
       tags: pip
     - role: virtual-machine-software
       tags: virtual-machine-software
+    - role: golang
+      version: 1.13.4
+      tags: golang
+  

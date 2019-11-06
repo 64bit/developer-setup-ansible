@@ -1,0 +1,19 @@
+---
+# tasks file for golang
+# Instructions from https://golang.org/doc/install#install
+
+- name: Download & Install Go binary
+  unarchive:
+    src: "https://dl.google.com/go/go{{ version }}.{{ ansible_system | lower }}-amd64.tar.gz"
+    remote_src: yes
+    dest: /usr/local
+  become: yes
+
+- name: Add path to .bashrc & .zshrc
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+    regexp: "PATH=$PATH:/usr/local/go/bin"
+    line: "PATH=$PATH:/usr/local/go/bin"
+  with_items:
+  - .bashrc
+  - .zshrc
