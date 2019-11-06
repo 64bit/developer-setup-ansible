@@ -24,6 +24,12 @@
   - .bashrc
   - .zshrc
 
+- name: Create go workspace $HOME/go
+  file:
+    path: "{{ lookup('env', 'HOME') }}/go"
+    state: directory
+    mode: '0755'
+
 - name: Setup GOPATH in .bashrc & .zshrc
   lineinfile:
     path: "{{ lookup('env', 'HOME') }}/{{ item }}"
