@@ -1,0 +1,4 @@
+- name: Install pp7zip-full
+  apt:
+    name: p7zip-full
+  become: yes  
