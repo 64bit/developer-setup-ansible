@@ -1,0 +1,25 @@
+---
+# tasks file for tmux
+
+- name: Install Tmux
+  package:
+    name: tmux
+  become: yes
+
+# Instructions from https://github.com/gpakosz/.tmux 
+
+- name: Install .tmux.conf (Oh My Tmux!)
+  git:
+    repo: 'https://github.com/gpakosz/.tmux.git'
+    dest: "{{ lookup('env', 'HOME') }}/.tmux"
+
+- name: Symbolic link to .tmux.conf
+  file:
+    src: "{{ lookup('env', 'HOME') }}/.tmux/.tmux.conf"
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    state: link
+
+- name: Copy .tmux.config.local
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/.tmux/.tmux.conf.local"
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf.local"
