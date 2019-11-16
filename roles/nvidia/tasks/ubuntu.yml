@@ -1,6 +1,6 @@
 - name: Install Nvidia Driver
   apt:
-    name: "nvidia-driver-{{ driver_version }}"
+    name: ["nvidia-dkms-{{ driver_version }}", "nvidia-driver-{{ driver_version }}"]
     update_cache: yes
   register: install  
   become: yes

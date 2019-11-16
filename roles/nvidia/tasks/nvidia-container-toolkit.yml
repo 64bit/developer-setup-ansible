@@ -8,6 +8,7 @@
 - name: get distribution
   shell: ". /etc/os-release; echo $ID$VERSION_ID"
   register: output
+  check_mode: no
 
 - name: add apt repository
   get_url:

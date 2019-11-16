@@ -25,7 +25,7 @@
     - role: docker
       tags: docker
     - role: nvidia
-      driver_version: "430"
+      driver_version: "435"
       tags: nvidia
     - role: google-chrome
       tags: google-chrome
