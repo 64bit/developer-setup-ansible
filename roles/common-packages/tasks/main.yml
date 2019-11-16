@@ -10,5 +10,6 @@
    - tig
    - curl
    - tree
+   - htop
 
 - include_tasks: "{{ ansible_pkg_mgr }}.yml"
