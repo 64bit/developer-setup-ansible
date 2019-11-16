@@ -38,4 +38,6 @@
     - role: golang
       version: 1.13.4
       tags: golang
+    - role: tmux
+      tags: tmux
   
