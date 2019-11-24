@@ -1,4 +1,4 @@
-- name: Install pp7zip-full
+- name: Install 
   apt:
-    name: p7zip-full
+    name: [ p7zip-full, net-tools, xsel]
   become: yes  
