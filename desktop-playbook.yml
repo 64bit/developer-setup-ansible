@@ -32,6 +32,7 @@
     - role: pip
       pip3_packages:
       - jupyterlab
+      - fabric
       tags: pip
     - role: virtual-machine-software
       tags: virtual-machine-software
