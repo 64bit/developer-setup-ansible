@@ -1,0 +1,21 @@
+# Instructions from https://help.ubuntu.com/community/KVM/Installation
+
+- name: Install KVM
+  apt:
+    name: [qemu-kvm, libvirt-daemon-system, libvirt-clients, bridge-utils]
+    state: present
+  become: yes    
+
+
+- name: Add user to libvirt group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: libvirt
+    append: true
+  become: yes
+
+- name: Virtual Machine Manager
+  apt:
+    name: virt-manager
+    state: present 
+  become: yes

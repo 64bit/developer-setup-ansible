@@ -5,3 +5,6 @@
     classic: yes
     state: present
   become: yes
+
+- name: Install KVM
+  include_tasks: kvm.yml
