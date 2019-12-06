@@ -22,7 +22,7 @@ To play `desktop-playbook.yml` playbook run:
 | visual-studio-code | Installs lastest version |  |
 | zsh | Installs `zsh` and `oh-my-zsh` | `ohmyzsh_theme` (string) and `ohmyzsh_plugins` (list) |  
 | pip | Installs `pip` (`pip2`) and `pip3`. Also sets `PATH=$PATH:~/.local/bin` for pip packages in shell startup files  (if present) `~/.zshrc` and `~/.bashrc`, hence restart shell as needed to load new `PATH`  | `pip3_packages` (list) |
-| virtual-machine-software | Installs `multipass` on Ubuntu | |
+| virtual-machine-software | Installs `multipass`. Installs KVM + virt-manager as described on https://help.ubuntu.com/community/KVM/Installation | |
 | golang | Installs `go` in `/usr/local/go` as described in [golang install doc](https://golang.org/doc/install#install). Adds `GOPATH=$HOME/go` in `~/.zshrc` and `~/.bashrc` | `version` (default = 1.13.4) |
 | tmux | Installs `tmux` along tmux configuration  |  [See gpakosz/.tmux on Github](https://github.com/gpakosz/.tmux)  |
 
