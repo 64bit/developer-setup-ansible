@@ -1,4 +1,4 @@
-- name: Install pp7zip-full
+- name: Install using apt 
   apt:
-    name: p7zip-full
+    name: [p7zip-full, golang-cfssl]
   become: yes  
