@@ -12,11 +12,22 @@ setup_ubuntu() {
   sudo apt install -y ansible 
 }
 
+setup_darwin() {
+  if command -v ansible; then
+    return 0
+  fi
+  # Python3 and Pip3 seems to get installed through
+  # command line developer tools
+  pip3 install --user ansible
+}
 
 case "$(uname)" in 
 
   Linux)
     setup_ubuntu 
+    ;;
+  Darwin)
+    setup_darwin
     ;;
   *)
     echo "Not Implemented for $(uname)"
