@@ -18,7 +18,7 @@ setup_darwin() {
   fi
   # Python3 and Pip3 seems to get installed through
   # command line developer tools
-  pip3 install --user ansible
+  sudo pip3 install ansible
 }
 
 case "$(uname)" in 
