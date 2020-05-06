@@ -1,0 +1,5 @@
+---
+# tasks file for init
+
+- debug:
+    msg: "{{ ansible_distribution }}"

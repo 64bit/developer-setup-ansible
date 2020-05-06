@@ -2,6 +2,8 @@
 - name: Developer Machine Setup Playbook
   hosts: localhost
   roles:
+    - role: init
+      tags: init
     - role: common-packages
       tags: common-packages
     - role: vim
